@@ -1,0 +1,40 @@
+[package]
+name = "vimium-linux"
+version = "0.1.0"
+edition = "2021"
+description = "Keyboard-driven navigation for Wayland, inspired by Vimium"
+license = "MIT"
+repository = "https://github.com/user/vimium-linux"
+keywords = ["wayland", "vimium", "keyboard", "accessibility", "linux"]
+categories = ["command-line-utilities", "accessibility"]
+
+[dependencies]
+# Async runtime
+tokio = { version = "1", features = ["full"] }
+
+# AT-SPI accessibility
+atspi = { version = "0.22", features = ["zbus"] }
+zbus = "4"
+
+# Wayland + layer-shell
+wayland-client = "0.31"
+wayland-protocols = { version = "0.32", features = ["client", "staging"] }
+wayland-protocols-wlr = { version = "0.3", features = ["client"] }
+smithay-client-toolkit = { version = "0.19", features = ["calloop"] }
+
+# Rendering
+cairo-rs = { version = "0.20", features = ["png"] }
+pango = "0.20"
+pangocairo = "0.20"
+
+# CLI and configuration
+clap = { version = "4", features = ["derive"] }
+serde = { version = "1", features = ["derive"] }
+toml = "0.8"
+dirs = "5"
+
+# Error handling & utilities
+anyhow = "1"
+thiserror = "1"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
